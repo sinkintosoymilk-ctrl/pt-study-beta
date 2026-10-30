@@ -1,0 +1,29 @@
+{
+  "comparison": "v128 local app zip -> v129 GitHub-ready repository snapshot",
+  "files_added": [
+    ".gitignore",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/PROJECT_STATUS.md",
+    "docs/RELEASE_CHECKLIST.md",
+    "docs/release-validation.json",
+    "docs/screenshots/01-home-mobile.png",
+    "docs/screenshots/02-years-mobile.png",
+    "docs/screenshots/03-question-with-figure-mobile.png",
+    "docs/screenshots/04-rationale-mobile.png",
+    "docs/screenshots/05-knowledge-mobile.png",
+    "docs/screenshots/06-home-desktop.png"
+  ],
+  "files_modified": [
+    "README.txt",
+    "index.html",
+    "sw.js"
+  ],
+  "files_deleted": [],
+  "core_question_data_changed": false,
+  "existing_286_image_files_changed": false,
+  "existing_javascript_logic_changed": false,
+  "preliminary_browser_test": "pass",
+  "deployment_status": "not uploaded/pushed yet",
+  "note": "New files are documentation/screenshots, except .gitignore. No personal study backups included."
+}

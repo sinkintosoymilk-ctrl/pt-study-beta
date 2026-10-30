@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 450" role="img" aria-label="車椅子適合判定の参考模式図"><style>text{font-family:"Noto Sans JP",Arial,sans-serif;fill:#273c49}.outline{stroke:#263b48;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;fill:none}.fine{stroke:#607986;stroke-width:2;fill:none}.seat{stroke:#526a74;stroke-width:7;fill:none}</style>
+<rect width="860" height="450" fill="white"/><text x="15" y="27" font-size="17">参考模式図（厚労省の公式原図ではありません）</text>
+<g transform="translate(30 90)"><text x="130" y="-12" font-size="19">背面・座面の寸法</text>
+<path class="outline" d="M70 95 Q86 37 123 44 Q160 35 175 94 L177 170 Q160 198 124 196 Q93 196 73 169Z"/>
+<path class="seat" d="M64 175H190M64 217H190M63 176V270 M189 176V270"/>
+<path class="fine" d="M54 105V158m-8 -53h15m-15 53h15"/><circle cx="32" cy="130" r="15" fill="#f3f7fa" stroke="#586c7b"/><text x="32" y="136" text-anchor="middle" font-size="17">①</text>
+<path class="fine" d="M204 160V190m-8 -30h15m-15 30h15"/><circle cx="232" cy="177" r="15" fill="#f3f7fa" stroke="#586c7b"/><text x="232" y="183" text-anchor="middle" font-size="17">②</text>
+<path class="fine" d="M181 198H207m-26 -6v13m26 -13v13"/><circle cx="221" cy="213" r="15" fill="#f3f7fa" stroke="#586c7b"/><text x="221" y="219" text-anchor="middle" font-size="17">③</text>
+</g>
+<g transform="translate(380 70)"><text x="142" y="8" font-size="19">側面・フットサポート</text>
+<circle cx="200" cy="254" r="93" fill="white" stroke="#4b6471" stroke-width="7"/><circle cx="200" cy="254" r="9" fill="#657d89"/>
+<circle cx="52" cy="292" r="31" fill="white" stroke="#4b6471" stroke-width="6"/><path class="seat" d="M98 132H265L295 220 M98 132V248L53 292 M90 248L300 248"/>
+<circle class="outline" cx="190" cy="60" r="23"/><path class="outline" d="M177 84L166 130 L128 150 L95 176 M166 125L194 151L241 154 M164 127L210 183L152 205 L107 212"/>
+<path class="fine" d="M95 317H310"/>
+<path class="fine" d="M94 292v26m-13 -26h25m-25 26h25"/><circle cx="96" cy="346" r="17" fill="#f3f7fa" stroke="#586c7b"/><text x="96" y="352" font-size="18" text-anchor="middle">④</text>
+<path class="fine" d="M190 153h22m-22 9h22"/><circle cx="230" cy="180" r="17" fill="#f3f7fa" stroke="#586c7b"/><text x="230" y="186" font-size="18" text-anchor="middle">⑤</text>
+</g><text x="430" y="432" font-size="14" text-anchor="middle">①〜⑤の位置関係を示した簡略図。正確な原図との寸法関係の照合は未完了。</text></svg>

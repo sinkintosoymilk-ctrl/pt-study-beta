@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 355" role="img" aria-label="上肢電気刺激部位の参考模式図"><style>text{font-family:"Noto Sans JP",Arial,sans-serif;fill:#273c49}.outline{stroke:#263b48;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;fill:none}.fine{stroke:#607986;stroke-width:2;fill:none}.seat{stroke:#526a74;stroke-width:7;fill:none}</style>
+<rect width="860" height="355" fill="white"/><text x="16" y="30" font-size="17">参考模式図（厚労省の公式原図ではありません）</text>
+<path d="M60 247 L60 123 Q75 95 108 91 Q158 77 202 88 L385 102 Q432 104 466 114 L552 108 Q607 99 670 107 Q685 97 704 102 L741 117 Q752 125 740 133 L696 132 L757 142 Q770 153 752 162 L703 152 L761 172 Q774 184 756 194 L691 179 L737 204 Q743 216 727 222 L664 199 L707 226 Q720 241 699 245 L642 216 Q610 207 587 211 L418 234 L251 234 L119 251Z" fill="#eef3f6" stroke="#425d6c" stroke-width="4"/>
+<path class="fine" d="M220 108 Q287 130 356 134 M215 224 Q318 195 400 211 M125 246 Q175 221 211 226"/>
+<g font-size="19" font-weight="bold"><circle cx="520" cy="138" r="19" fill="#fff" stroke="#526b77" stroke-width="2"/><text x="520" y="145" text-anchor="middle">①</text>
+<circle cx="522" cy="212" r="19" fill="#fff" stroke="#526b77" stroke-width="2"/><text x="522" y="219" text-anchor="middle">②</text>
+<circle cx="341" cy="119" r="19" fill="#fff" stroke="#526b77" stroke-width="2"/><text x="341" y="126" text-anchor="middle">③</text>
+<circle cx="358" cy="210" r="19" fill="#fff" stroke="#526b77" stroke-width="2"/><text x="358" y="217" text-anchor="middle">④</text>
+<circle cx="206" cy="190" r="19" fill="#fff" stroke="#526b77" stroke-width="2"/><text x="206" y="197" text-anchor="middle">⑤</text></g>
+<text x="430" y="322" font-size="15" text-anchor="middle">部位番号の概略配置。電極貼付には必ず公式原図を確認。</text></svg>

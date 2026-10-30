@@ -1,0 +1,11 @@
+# Local OS / editor artifacts
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+# Personal study records: never commit student JSON backups
+study-records-*.json
+pt-study-backup-*.json

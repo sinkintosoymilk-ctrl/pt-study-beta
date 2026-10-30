@@ -1,0 +1,36 @@
+{
+  "release": "v129 GitHub upload ready",
+  "source_zip": "PT国試_v128_既存アプリ_5肢解説の重点補強.zip",
+  "github_pushed": false,
+  "cloudflare_deployed": false,
+  "question_count": 2000,
+  "gradable": 1975,
+  "official_excluded": 25,
+  "image_files": 286,
+  "image_manifest_entries": 286,
+  "option_rationales": 262,
+  "knowledge_questions": 123,
+  "knowledge_links": 167,
+  "repaired_figure_targets": 22,
+  "v128_question_data_sha256": "157a181749fd9d759995206da2090d903e36e92e6368186319bc6950ceb9bc9d",
+  "browser_chromium_test": "pass (scripts/CSS directly inlined, figures data URI)",
+  "viewport_mobile": "390x844",
+  "screenshots": [
+    "01-home-mobile.png",
+    "02-years-mobile.png",
+    "03-question-with-figure-mobile.png",
+    "04-rationale-mobile.png",
+    "05-knowledge-mobile.png",
+    "06-home-desktop.png"
+  ],
+  "representative_original_figure_natural_size": {
+    "naturalWidth": 1063,
+    "naturalHeight": 677,
+    "visible": true
+  },
+  "excluded_question_ungraded": true,
+  "file_server_runtime_test": "not executed; network requests to localhost blocked in sandbox",
+  "javascript_errors": [],
+  "node_js_syntax_check": "pass",
+  "scope_note": "No full official original text audit or medical option-explanation independent review"
+}

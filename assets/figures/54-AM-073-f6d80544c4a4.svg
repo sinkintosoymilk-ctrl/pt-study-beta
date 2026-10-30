@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 355" role="img" aria-label="腰椎負荷比較の参考模式図"><style>text{font-family:"Noto Sans JP",Arial,sans-serif;fill:#273c49}.outline{stroke:#263b48;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;fill:none}.fine{stroke:#607986;stroke-width:2;fill:none}.seat{stroke:#526a74;stroke-width:7;fill:none}</style>
+<rect width="820" height="355" fill="white"/>
+<text x="18" y="28" font-size="17" fill="#637482">参考模式図（厚労省の公式原図ではありません）</text>
+<g transform="translate(85 70)"><text x="30" y="12" font-size="23" font-weight="bold">A</text>
+<circle class="outline" cx="55" cy="55" r="20"/><path class="outline" d="M54 75 L55 142 L44 198 L42 250 M55 142 L71 198 L70 250 M44 250h17m9 0h17 M56 93 L37 156 L38 193 M56 93 L80 153 L82 192"/><path class="fine" d="M50 47q-12 -15 -10 3"/>
+</g>
+<g transform="translate(315 85)"><text x="24" y="0" font-size="23" font-weight="bold">B</text>
+<path d="M18 184H140V255H18Z" fill="#f1f5f7" stroke="#647985" stroke-width="2"/>
+<circle class="outline" cx="57" cy="84" r="19"/><path class="outline" d="M52 100 L35 129 L68 159 L84 181 L93 215 L142 221 M65 157 L99 183 L104 218 L153 219 M36 133 L38 166 M41 139 L69 162"/>
+<path class="fine" d="M18 184H140"/><path class="outline" d="M141 221h17"/>
+</g>
+<g transform="translate(572 85)"><text x="18" y="0" font-size="23" font-weight="bold">C</text>
+<path d="M16 184H140V255H16Z" fill="#f1f5f7" stroke="#647985" stroke-width="2"/>
+<circle class="outline" cx="52" cy="88" r="19"/><path class="outline" d="M52 108 L53 181 L102 184 L112 218 L150 218 M57 127 L79 159 L103 174 M53 182 L73 216 L114 219 M39 127 L43 166"/><path class="outline" d="M141 218h17"/>
+</g><text x="410" y="338" font-size="14" text-anchor="middle">A：立位　B：体幹前傾座位　C：体幹を起こした座位</text></svg>
