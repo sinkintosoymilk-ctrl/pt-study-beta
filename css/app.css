@@ -93,3 +93,11 @@ body.in-session .wrap{padding-top:8px}
 .question-audit p{margin:8px 0;overflow-wrap:anywhere;line-height:1.65}
 .question-audit strong{color:var(--ink,#193746)}
 
+
+
+/* === BETA ONLY: visual differentiation from production (do not merge into production as-is) === */
+:root{--brand:#c2410c;--soft:#fdeee2;--ink:#3f2a1d}
+header{background:#9a3412}
+header p{color:#fde8d7}
+.beta-banner{position:sticky;top:0;z-index:999;background:repeating-linear-gradient(45deg,#fbbf24 0 18px,#f59e0b 18px 36px);color:#111827;font-weight:700;text-align:center;padding:9px 10px;font-size:.92rem;letter-spacing:.02em;box-shadow:0 1px 6px #0003}
+.tab.active{border-bottom-color:#c2410c;color:#9a3412}

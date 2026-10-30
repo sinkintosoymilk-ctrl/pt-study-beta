@@ -1,4 +1,4 @@
-const CACHE='pt-kokushi-v130beta-20261031';
+const CACHE='pt-kokushi-v130beta2-20261031';
 const CORE=['./','./index.html','./css/app.css','./data/questions.js','./data/related.js','./data/rationales.js','./data/rationale-expansion-v128.js','./data/rationale-expansion-pilot-w01.js','./data/knowledge-v121.js','./js/core.js','./js/knowledge-route.js','./js/knowledge-v121-integration.js','./js/year-browser.js','./js/figure-zoom.js','./js/official-sources.js','./js/offline-control.js','./data/figure-manifest.json'];
 self.addEventListener('install', event => event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(CORE);await self.skipWaiting()})()));
 self.addEventListener('activate', event => event.waitUntil((async()=>{for(const name of await caches.keys()) if(name.startsWith('pt-kokushi-')&&name!==CACHE) await caches.delete(name);await self.clients.claim()})()));
