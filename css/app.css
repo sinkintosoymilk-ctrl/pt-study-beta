@@ -101,3 +101,13 @@ header{background:#9a3412}
 header p{color:#fde8d7}
 .beta-banner{position:sticky;top:0;z-index:999;background:repeating-linear-gradient(45deg,#fbbf24 0 18px,#f59e0b 18px 36px);color:#111827;font-weight:700;text-align:center;padding:9px 10px;font-size:.92rem;letter-spacing:.02em;box-shadow:0 1px 6px #0003}
 .tab.active{border-bottom-color:#c2410c;color:#9a3412}
+
+
+/* === BETA ONLY (2): override hard-coded teal accents that beat the variable swap === */
+#dashboard #suggestStart{background:#c2410c;border-color:#c2410c}
+.app-tabs .tab.active{border-bottom-color:#c2410c;color:#9a3412}
+.suggested-sibling button{background:#c2410c;border-color:#c2410c}
+.suggested-sibling{border-color:#f0c9ae;background:#fdf6ef}
+.suggested-sibling strong{color:#9a3412}
+.radio-row button.on,.knowledge-node button.on{background:#fdeee2;border-color:#c2410c}
+a{color:#b34700}
