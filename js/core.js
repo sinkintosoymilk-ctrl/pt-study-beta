@@ -30,7 +30,7 @@ function pastCard(item, grade){
 // v100: CURATED_STUDY_LINKS loaded separately from data/related.js.
 
 function renderPastRelated(id){
- const root=$('pastRelatedList');root.replaceChildren();
+ const root=$('pastRelatedList');if(!root)return;root.replaceChildren();
  const verified=(CURATED_STUDY_LINKS[id]||[]).filter(x=>!!BYID[x.id]);
  verified.sort((a,b)=>Number(a.grade!=='same')-Number(b.grade!=='same'));
  const top=verified.slice(0,2);
@@ -402,7 +402,7 @@ function showKnowledge(topicid,focus=''){activeKnowledgeTopic=topicid;knowledgeE
 }
 function updateKnowledgeCount(){$('knowledgeCount').textContent='自分の記録 '+countKnowledge()+'件'}
 function knowledgeForQuestion(qid){let t=(KNOWLEDGE_QMAP[qid]||[])[0];return t||'question:'+qid}
-function drawQuestionKnowledge(){const q=current;if(!q)return;const root=$('knowledgeQuestionEntry');root.replaceChildren();const t=knowledgeForQuestion(q.id),found=KNOWLEDGE_BYID[t];const p=document.createElement('p');p.className='caption';p.textContent=found?'この問題に関係する知識：'+found.title:'この問題の知識を自分の言葉で記録できます。まだ対応する整理済みテーマはありません。';const b=document.createElement('button');b.className='secondary';b.textContent='知識ノートで理由をたどる';b.onclick=()=>{showView('review',false);showKnowledge(t,found?.nodes.find(n=>n.q.includes(q.id))?.id||'');$('knowledgeBook').scrollIntoView({block:'start',behavior:'smooth'})};root.append(p,b)}
+function drawQuestionKnowledge(){const q=current;if(!q)return;const root=$('knowledgeQuestionEntry');if(!root)return;root.replaceChildren();const t=knowledgeForQuestion(q.id),found=KNOWLEDGE_BYID[t];const p=document.createElement('p');p.className='caption';p.textContent=found?'この問題に関係する知識：'+found.title:'この問題の知識を自分の言葉で記録できます。まだ対応する整理済みテーマはありません。';const b=document.createElement('button');b.className='secondary';b.textContent='知識ノートで理由をたどる';b.onclick=()=>{showView('review',false);showKnowledge(t,found?.nodes.find(n=>n.q.includes(q.id))?.id||'');$('knowledgeBook').scrollIntoView({block:'start',behavior:'smooth'})};root.append(p,b)}
 $('knowledgeTopic').onchange=e=>showKnowledge(e.target.value);
 $('knowledgeAddBtn').onclick=()=>{const title=$('knowledgeBranchTitle').value.trim(),text=$('knowledgeBranchText').value.trim();if(!title){alert('疑問を入力してください。');return}if(title.length>120||text.length>1400){alert('文字数を減らしてください。');return}const tid=activeKnowledgeTopic;knowledgeEnsure();const arr=state.knowledge.branches[tid]??=[];if(arr.length>=80){alert('このテーマの枝は80件まで保存できます。');return}arr.push({id:'b'+Date.now()+'-'+(++knowledgeAutoCount),title,text,at:new Date().toISOString()});save();$('knowledgeBranchTitle').value='';$('knowledgeBranchText').value='';showKnowledge(tid)};
 const priorRehydrateKnowledge=rehydrate;

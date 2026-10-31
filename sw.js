@@ -1,12 +1,30 @@
-const CACHE='pt-kokushi-v149beta-20261031';
-const CORE=['./','./index.html','./css/app.css','./data/questions.js','./data/related.js','./data/rationales.js','./data/rationale-expansion-v128.js','./data/rationale-expansion-pilot-w01.js','./data/rationale-expansion-undou-r1.js','./data/rationale-expansion-undou-r2.js','./data/rationale-expansion-kaibou-r1.js','./data/rationale-expansion-kaibou-r2.js','./data/rationale-expansion-kaibou-r3.js','./data/rationale-expansion-byouri-r1.js','./data/rationale-expansion-byouri-r2.js','./data/rationale-expansion-byouri-r3.js','./data/rationale-expansion-byouri-r4.js','./data/rationale-expansion-byouri-r5.js',
+const CACHE='pt-kokushi-v168beta-20261031';
+const CORE=['./','./index.html','./css/app.css','./data/questions.js','./data/rationales.js','./data/rationale-expansion-v128.js','./data/rationale-expansion-pilot-w01.js','./data/rationale-expansion-undou-r1.js','./data/rationale-expansion-undou-r2.js','./data/rationale-expansion-kaibou-r1.js','./data/rationale-expansion-kaibou-r2.js','./data/rationale-expansion-kaibou-r3.js','./data/rationale-expansion-byouri-r1.js','./data/rationale-expansion-byouri-r2.js','./data/rationale-expansion-byouri-r3.js','./data/rationale-expansion-byouri-r4.js','./data/rationale-expansion-byouri-r5.js',
   './data/rationale-expansion-hyouka-r1.js',
   './data/rationale-expansion-hyouka-r2.js',
   './data/rationale-expansion-hyouka-r3.js',
   './data/rationale-expansion-hyouka-r4.js',
   './data/rationale-expansion-seiri-r1.js',
   './data/rationale-expansion-seiri-r2.js',
-  './data/rationale-expansion-seiri-r3.js','./data/knowledge-v121.js','./js/core.js','./js/knowledge-route.js','./js/knowledge-v121-integration.js','./js/year-browser.js','./js/figure-zoom.js','./js/official-sources.js','./js/offline-control.js','./data/figure-manifest.json'];
+  './data/rationale-expansion-seiri-r3.js',
+  './data/rationale-expansion-shinri-r1.js',
+  './data/rationale-expansion-shinri-r2.js',
+  './data/rationale-expansion-naibu-r1.js',
+  './data/rationale-expansion-naibu-r2.js',
+  './data/rationale-expansion-shoni-r1.js',
+  './data/rationale-expansion-shoni-r2.js',
+  './data/rationale-expansion-chiiki-r1.js',
+  './data/rationale-expansion-chiiki-r2.js',
+  './data/rationale-expansion-shinkei-r1.js',
+  './data/rationale-expansion-shinkei-r2.js',
+  './data/rationale-expansion-shikkei-r1.js',
+  './data/rationale-expansion-shikkei-r2.js',
+  './data/rationale-expansion-gisoku-r1.js',
+  './data/rationale-expansion-gisoku-r2.js',
+  './data/rationale-expansion-chiryo-r1.js',
+  './data/rationale-expansion-chiryo-r2.js',
+  './data/rationale-expansion-tail-r1.js',
+  './data/rationale-expansion-tail-r2.js','./js/core.js','./js/year-browser.js','./js/figure-zoom.js','./js/official-sources.js','./js/offline-control.js','./data/figure-manifest.json'];
 self.addEventListener('install', event => event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(CORE);await self.skipWaiting()})()));
 self.addEventListener('activate', event => event.waitUntil((async()=>{for(const name of await caches.keys()) if(name.startsWith('pt-kokushi-')&&name!==CACHE) await caches.delete(name);await self.clients.claim()})()));
 self.addEventListener('fetch', event => {if(event.request.method!=='GET'||new URL(event.request.url).origin!==self.location.origin)return;
