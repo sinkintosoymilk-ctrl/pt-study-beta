@@ -111,3 +111,7 @@ header p{color:#fde8d7}
 .suggested-sibling strong{color:#9a3412}
 .radio-row button.on,.knowledge-node button.on{background:#fdeee2;border-color:#c2410c}
 a{color:#b34700}
+/* === BETA ONLY (v169): undou topic pilot === */
+.topic-wrong-box{border-left:4px solid #d97a50;background:#fff6ef;border-radius:8px;padding:10px 12px;margin:9px 0}
+.topic-wrong-box>strong{color:#9a3412;font-size:.9rem}
+#topicLinks{margin:4px 0 6px}
