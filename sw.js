@@ -1,4 +1,4 @@
-const CACHE='pt-kokushi-v169beta-20261031';
+const CACHE='pt-kokushi-v171beta-20261031';
 const CORE=['./','./index.html','./css/app.css','./data/questions.js','./data/rationales.js','./data/rationale-expansion-v128.js','./data/rationale-expansion-pilot-w01.js','./data/rationale-expansion-undou-r1.js','./data/rationale-expansion-undou-r2.js','./data/rationale-expansion-kaibou-r1.js','./data/rationale-expansion-kaibou-r2.js','./data/rationale-expansion-kaibou-r3.js','./data/rationale-expansion-byouri-r1.js','./data/rationale-expansion-byouri-r2.js','./data/rationale-expansion-byouri-r3.js','./data/rationale-expansion-byouri-r4.js','./data/rationale-expansion-byouri-r5.js',
   './data/rationale-expansion-hyouka-r1.js',
   './data/rationale-expansion-hyouka-r2.js',
@@ -24,7 +24,7 @@ const CORE=['./','./index.html','./css/app.css','./data/questions.js','./data/ra
   './data/rationale-expansion-chiryo-r1.js',
   './data/rationale-expansion-chiryo-r2.js',
   './data/rationale-expansion-tail-r1.js',
-  './data/rationale-expansion-tail-r2.js','./data/topics-undou-pilot.js','./js/core.js','./js/year-browser.js','./js/topics-undou-pilot.js','./js/figure-zoom.js','./js/official-sources.js','./js/offline-control.js','./data/figure-manifest.json'];
+  './data/rationale-expansion-tail-r2.js','./data/topics-all.js','./js/core.js','./js/year-browser.js','./js/topics-all.js','./js/figure-zoom.js','./js/official-sources.js','./js/offline-control.js','./data/figure-manifest.json'];
 self.addEventListener('install', event => event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(CORE);await self.skipWaiting()})()));
 self.addEventListener('activate', event => event.waitUntil((async()=>{for(const name of await caches.keys()) if(name.startsWith('pt-kokushi-')&&name!==CACHE) await caches.delete(name);await self.clients.claim()})()));
 self.addEventListener('fetch', event => {if(event.request.method!=='GET'||new URL(event.request.url).origin!==self.location.origin)return;
