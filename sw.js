@@ -1,4 +1,4 @@
-const CACHE='pt-kokushi-v171beta-20261031';
+const CACHE='pt-kokushi-v172beta-20261031';
 const CORE=['./','./index.html','./css/app.css','./data/questions.js','./data/rationales.js','./data/rationale-expansion-v128.js','./data/rationale-expansion-pilot-w01.js','./data/rationale-expansion-undou-r1.js','./data/rationale-expansion-undou-r2.js','./data/rationale-expansion-kaibou-r1.js','./data/rationale-expansion-kaibou-r2.js','./data/rationale-expansion-kaibou-r3.js','./data/rationale-expansion-byouri-r1.js','./data/rationale-expansion-byouri-r2.js','./data/rationale-expansion-byouri-r3.js','./data/rationale-expansion-byouri-r4.js','./data/rationale-expansion-byouri-r5.js',
   './data/rationale-expansion-hyouka-r1.js',
   './data/rationale-expansion-hyouka-r2.js',
