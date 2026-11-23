@@ -78,14 +78,15 @@
     // 同じ論点の別年度問題
     const sameMap = new Map(); // targetId -> shared topics[]
     core.forEach(t => (coreIndex[t] || []).forEach(o => {
-      if (o !== id && otherYear(id, o) && playable(o)) {
+      if (o !== id && playable(o)) {
         if (!sameMap.has(o)) sameMap.set(o, []);
         sameMap.get(o).push(t);
       }
     }));
+    // v181: 同年度も含める（2026-11-22 ゆうの決定）。並びは別年度を優先し、同年度は後ろ。
     const sameList = [...sameMap.entries()]
-      .map(([target, shared]) => ({ target, shared }))
-      .sort((a, b) => b.shared.length - a.shared.length || a.target.localeCompare(b.target));
+      .map(([target, shared]) => ({ target, shared, sameYear: !otherYear(id, target) }))
+      .sort((a, b) => Number(a.sameYear) - Number(b.sameYear) || b.shared.length - a.shared.length || a.target.localeCompare(b.target));
 
     // 誤答→正解リンク（選択肢単位）
     const cs = correctNums(id);
@@ -142,7 +143,7 @@
     const sameVisible = sameList.filter(x => !frontTargets.has(x.target)).slice(0, 3);
     const sameRest = sameList.filter(x => !frontTargets.has(x.target)).slice(3);
     if (sameVisible.length) {
-      const head = el('strong', '', '同じ論点の別年度問題');
+      const head = el('strong', '', '同じ論点のほかの問題');
       root.append(head);
       for (const x of sameVisible) {
         root.append(linkBlock(
@@ -178,7 +179,7 @@
     }
 
     if (!sameList.length && !wrongLinks.length) {
-      root.append(el('p', 'caption', '別年度へのつながりはまだありません。'));
+      root.append(el('p', 'caption', 'ほかの問題へのつながりはまだありません。'));
     }
     root.append(el('p', 'caption', '論点タグは全問題に付与済み（論点411件）。誤答肢の論点も全分野横断でつながります。'));
   }
