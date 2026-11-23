@@ -20,6 +20,12 @@
   const tags = PT_CHOICE_TAGS;
   const scopeByTopic = Object.fromEntries(PT_TOPIC_MASTER.map(t => [t.name, t.scope]));
 
+  // 混同ペア（3問以上の頻出組み合わせ、2026-11-23 集計）: 誤答側論点 -> 正解側論点
+  const confusionMap = new Map();
+  if (typeof PT_CONFUSION_PAIRS !== 'undefined') {
+    for (const p of PT_CONFUSION_PAIRS) confusionMap.set(p.w + '\u0000' + p.c, p.n);
+  }
+
   const correctNums = id => {
     const q = BYID[id];
     if (!q) return new Set();
@@ -137,6 +143,24 @@
         '選択肢' + x.n + '「' + choiceText + '」はこの問題では誤答ですが、' + x.target + ' では正解側の論点です。',
         x.target
       ));
+    }
+
+    // 混同ペア: 選んだ誤答肢の論点と中心論点が頻出の組み合わせなら注意を出す
+    if (confusionMap.size) {
+      const hits = [];
+      const seenPair = new Set();
+      (entry.choices || []).forEach(c => {
+        if (cs.has(c.n) || !selected.includes(c.n)) return;
+        (c.topics || []).forEach(t => core.forEach(ct => {
+          const k = t + '\u0000' + ct;
+          const n = confusionMap.get(k);
+          if (n && !seenPair.has(k)) { seenPair.add(k); hits.push({ w: t, c: ct, n }); }
+        }));
+      });
+      hits.sort((a, b) => b.n - a.n);
+      for (const h of hits.slice(0, 2)) {
+        root.append(el('p', 'caption', '混同しやすい組み合わせ：「' + h.w + '」と「' + h.c + '」。この型の取り違えは過去問' + h.n + '問に出ています。'));
+      }
     }
 
     // 同じ論点：まず3問まで

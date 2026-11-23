@@ -1,4 +1,4 @@
-const CACHE='pt-kokushi-v185beta-20261031';
+const CACHE='pt-kokushi-v188beta-20261031';
 const CORE=['./','./index.html','./css/app.css','./data/questions.js','./data/rationales.js','./data/rationale-expansion-v128.js','./data/rationale-expansion-pilot-w01.js','./data/rationale-expansion-undou-r1.js','./data/rationale-expansion-undou-r2.js','./data/rationale-expansion-kaibou-r1.js','./data/rationale-expansion-kaibou-r2.js','./data/rationale-expansion-kaibou-r3.js','./data/rationale-expansion-byouri-r1.js','./data/rationale-expansion-byouri-r2.js','./data/rationale-expansion-byouri-r3.js','./data/rationale-expansion-byouri-r4.js','./data/rationale-expansion-byouri-r5.js',
   './data/rationale-expansion-hyouka-r1.js',
   './data/rationale-expansion-hyouka-r2.js',
@@ -25,14 +25,16 @@ const CORE=['./','./index.html','./css/app.css','./data/questions.js','./data/ra
   './data/rationale-expansion-chiryo-r2.js',
   './data/rationale-expansion-tail-r1.js',
   './data/rationale-expansion-tail-r2.js','./data/rationale-expansion-61fix-r1.js','./data/rationale-expansion-thinfix-r1.js','./data/rationale-expansion-identfix-r1.js',
-  './data/rationale-expansion-numfix-r1.js','./data/topics-all.js','./js/core.js','./js/year-browser.js','./js/topics-all.js','./js/figure-zoom.js','./js/official-sources.js','./js/offline-control.js','./data/figure-manifest.json'];
+  './data/rationale-expansion-numfix-r1.js',
+  './data/rationale-expansion-settlefix-r1.js',
+  './data/confusion-pairs.js','./data/topics-all.js','./js/core.js','./js/year-browser.js','./js/topics-all.js','./js/figure-zoom.js','./js/official-sources.js','./js/offline-control.js','./data/figure-manifest.json','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png','./icons/apple-touch-icon.png'];
 self.addEventListener('install', event => event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(CORE);await self.skipWaiting()})()));
 self.addEventListener('activate', event => event.waitUntil((async()=>{for(const name of await caches.keys()) if(name.startsWith('pt-kokushi-')&&name!==CACHE) await caches.delete(name);await self.clients.claim()})()));
 self.addEventListener('fetch', event => {if(event.request.method!=='GET'||new URL(event.request.url).origin!==self.location.origin)return;
   const url=new URL(event.request.url);
   const networkFirst=event.request.mode==='navigate'||/\.(html|css|js|json)$/.test(url.pathname);
   event.respondWith((async()=>{const c=await caches.open(CACHE);
-    if(networkFirst){try{const r=await fetch(event.request);if(r.ok)event.waitUntil(c.put(event.request,r.clone()).catch(()=>{}));return r}catch(e){const found=await c.match(event.request);if(found)return found;if(event.request.mode==='navigate'){const fallback=await c.match('./index.html');if(fallback)return fallback;}throw e;}}
+    if(networkFirst){const fetchP=fetch(event.request);fetchP.catch(()=>{});try{const r=await Promise.race([fetchP,new Promise((_,rej)=>setTimeout(()=>rej(new Error('sw-timeout')),4000))]);if(r.ok)event.waitUntil(c.put(event.request,r.clone()).catch(()=>{}));return r}catch(e){const found=await c.match(event.request);if(found)return found;try{return await fetchP}catch(e2){if(event.request.mode==='navigate'){const fallback=await c.match('./index.html');if(fallback)return fallback;}throw e2;}}}
     const found=await c.match(event.request);if(found)return found;
     const r=await fetch(event.request);if(r.ok)event.waitUntil(c.put(event.request,r.clone()).catch(()=>{}));return r;})());
 });
