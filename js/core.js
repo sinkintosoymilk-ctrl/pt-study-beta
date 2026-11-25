@@ -431,3 +431,70 @@ const priorResetKnowledge=$('resetLog').onclick;
 $('resetLog').onclick=()=>{priorResetKnowledge();showKnowledge('endocrine')};
 $('answer').onclick=()=>{answer();if(submitted)drawQuestionKnowledge()};
 showKnowledge('endocrine');
+
+/* v192 戻る対応：画面遷移をブラウザ履歴に積み、端末の「戻る」（Androidのスワイプ等）でも
+   画面上の「戻る」ボタンでも、アプリを閉じずに前の画面へ戻れるようにする。
+   戻る操作は基本的にタブ移動と同じ扱いで、解いているセッションは保持される。
+   例外は「問題を解く」画面からホームへ戻る場合のみで、その場合はセッションを終了する
+   （未解答の問題があるときは確認する。解答済みの履歴は保持される）。 */
+(function(){
+  const stack=['learn'];
+  let internal=false;
+  const playEl=$('play');
+  const playVisible=()=>!playEl.classList.contains('hidden')&&!playEl.classList.contains('view-hidden');
+  const activeView=()=>{const b=document.querySelector('.app-tabs .tab.active');return b?b.dataset.view:'learn'};
+  const screen=()=>(activeView()==='learn'&&playVisible())?'play':activeView();
+  const bar=$('navBackBar');
+  const syncBtn=()=>{if(bar)bar.classList.toggle('hidden',stack.length<=1)};
+  function pushScreen(s){
+    if(stack[stack.length-1]===s)return;
+    stack.push(s);
+    try{history.pushState({nav:stack.length-1},'')}catch(e){}
+    syncBtn();
+  }
+  let suppressNav=false;
+  function syncNav(){if(!internal&&!suppressNav)pushScreen(screen())}
+  const origShowView=showView;
+  showView=function(...args){const r=origShowView(...args);syncNav();return r};
+  const origShow=show;
+  show=function(...args){const r=origShow(...args);syncNav();return r};
+  const origEnd=endSession;
+  endSession=function(...args){const r=origEnd(...args);
+    if(stack[stack.length-1]==='play'){stack[stack.length-1]='learn';try{history.replaceState({nav:stack.length-1},'')}catch(e){}}
+    syncBtn();return r};
+  function navigateTo(target,fromPlay){
+    internal=true;
+    try{
+      if(target==='play'){origShowView('learn',false)}
+      else if(target==='learn'&&fromPlay&&playVisible()){
+        session=null;current=null;
+        playEl.classList.add('hidden');$('sessionEnd').classList.add('hidden');
+        origShowView('learn',false);update();
+      }else{origShowView(target,false)}
+    }finally{internal=false}
+  }
+  window.addEventListener('popstate',()=>{
+    if(stack.length<=1){syncBtn();return}
+    const cur=stack[stack.length-1];
+    const target=stack[stack.length-2];
+    if(cur==='play'&&target==='learn'&&playVisible()&&session&&!submitted){
+      if(!confirm('未解答の問題を離れますか？ 解答済みの履歴は保持されます。')){
+        try{history.pushState({nav:stack.length-1},'')}catch(e){}
+        return;
+      }
+    }
+    stack.pop();
+    navigateTo(target,cur==='play');
+    syncBtn();
+  });
+  function wrapStarter(fn){
+    return function(...args){suppressNav=true;try{return fn(...args)}finally{suppressNav=false;syncNav()}}
+  }
+  begin=wrapStarter(begin);
+  beginOne=wrapStarter(beginOne);
+  if(typeof practiceTutor==='function')practiceTutor=wrapStarter(practiceTutor);
+  const btn=$('navBackBtn');
+  if(btn)btn.onclick=()=>history.back();
+  try{history.replaceState({nav:0},'')}catch(e){}
+  syncBtn();
+})();
